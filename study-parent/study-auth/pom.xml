@@ -19,31 +19,24 @@
     <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        <version>2.1.0.RELEASE</version>
     </dependency>
-
-    <!-- Srping Boot Web 支持 -->
+        <!-- Spring Security Oauth2.0 Component START -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
     <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-        <exclusions>
-            <!-- 排除掉 内置 Tomcat -->
-            <exclusion>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-tomcat</artifactId>
-            </exclusion>
-            <exclusion>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-            </exclusion>
-        </exclusions>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-oauth2</artifactId>
     </dependency>
-
-    <!-- 内置服务器使用 Undertow-->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-undertow</artifactId>
-    </dependency>
+    <!--Spring Security Oauth2.0 Component END -->
 </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
