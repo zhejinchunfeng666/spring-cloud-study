@@ -13,5 +13,8 @@ Spring Cloud Project Study
 #### study-zuul   服务网关
 
 #### study-core   服务公共核心部分
+     * 配置数据库连接
+     * 实体类
 
 #### study-data   数据服务
+     * mapper以及xml文件
