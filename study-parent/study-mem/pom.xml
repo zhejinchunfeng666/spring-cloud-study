@@ -11,6 +11,49 @@
     <packaging>jar</packaging>
     <artifactId>study-mem</artifactId>
 <dependencies>
+    <dependency>
+        <groupId>com.zf</groupId>
+        <artifactId>study-data</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <!--微信相关-->
+    <dependency>
+        <groupId>com.github.binarywang</groupId>
+        <artifactId>weixin-java-pay</artifactId>
+        <version>3.8.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.binarywang</groupId>
+        <artifactId>weixin-java-mp</artifactId>
+        <version>3.8.0</version>
+    </dependency>
+    <!-- elastic依赖-->
+    <dependency>
+        <groupId>org.elasticsearch.client</groupId>
+        <artifactId>elasticsearch-rest-high-level-client</artifactId>
+        <version>[7.7.0]</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-client</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.elasticsearch</groupId>
+        <artifactId>elasticsearch</artifactId>
+        <version>[7.7.0]</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-client -->
+    <dependency>
+        <groupId>org.elasticsearch.client</groupId>
+        <artifactId>elasticsearch-rest-client</artifactId>
+        <version>[7.7.0]</version>
+    </dependency>
 <!--    <dependency>-->
 <!--        <groupId>com.zf</groupId>-->
 <!--        <artifactId>study-data</artifactId>-->
@@ -57,6 +100,18 @@
         <version>1.0.2</version>
         <scope>system</scope>
         <systemPath>${basedir}/src/main/resources/jar/jave-1.0.2.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-security</artifactId>
     </dependency>
 </dependencies>
     <build>

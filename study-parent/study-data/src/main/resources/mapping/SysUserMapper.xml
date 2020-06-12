@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zf.study.data.mapper.SysUserMapper">
+	<resultMap id="ResultMap" type="com.zf.study.core.entity.SysUser">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="username" jdbcType="VARCHAR" property="userName" />
+		<result column="password" jdbcType="VARCHAR" property="passWord" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+	</resultMap>
+
+	<select id="selectUserInfoByUserName" parameterType="String"
+		resultMap="ResultMap">
+		SELECT
+		*
+		FROM
+		sys_user
+		where
+		username = #{username}
+	</select>
+	<insert id="insertUserInfo" parameterType="com.zf.study.core.entity.SysUser">
+		INSERT INTO
+		sys_user(username,password,status)
+		VALUES
+		(#{userName},#{passWord},#{status})
+	</insert>
+</mapper>

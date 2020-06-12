@@ -1,10 +1,28 @@
 spring:
   datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/amy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/amy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-#mybatis:
-#  mapper-locations: classpath:mapping/*.xml
-#  type-aliases-package: com.zf.study.core.entity
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    filters: stat,wall,log4j
+    logSlowSql: true
+  #redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+mybatis-plus:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.zf.study.core.entity
+  base-packages: com.zf.study.*.mapper

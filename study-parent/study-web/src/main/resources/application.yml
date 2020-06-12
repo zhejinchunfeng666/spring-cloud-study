@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: web
+
+server:
+  port: 8084
+
+  #redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/

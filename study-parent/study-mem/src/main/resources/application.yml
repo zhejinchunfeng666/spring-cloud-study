@@ -1,14 +1,31 @@
 server:
   port: 8082
 
-
 spring:
+  application:
+    name: mem
   datasource:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/amy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
+  elastic:
+    hosts: http://127.0.0.1:9200
+    username:
+    password:
 mybatis-plus:
-  mapper-locations: classpath:mappings/*.xml
+  mapper-locations: classpath:mapping/*.xml
     #实体扫描，多个package用逗号或者分号分隔
 #  typeAliasesPackage: cn.saytime.model
+
+# wechat config
+wechat:
+   #AppID: wxc320c5ded4777e6b
+   #AppSecret: 98f6da20e1d28c46abd16a55eab8d8ed
+   AppId: wx7777fbdff9882ecf
+   AppSecrt: 49a119626e069d24b3ff5a474f3f5112
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/

@@ -3,9 +3,13 @@ package com.zf.study.mem;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@MapperScan("com.zf.study.mem.mapper")
+@EnableEurekaClient
+@EnableFeignClients
+@MapperScan("com.zf.study.*.mapper")
 public class StudyMemApplication {
     public static void main(String[] args) {
         SpringApplication.run(StudyMemApplication.class,args);
