@@ -1,0 +1,36 @@
+server:
+  port: 8093
+spring:
+  application:
+    name: zuul
+
+zuul:
+  #ignoredServices: '*'
+  ignored-patterns: /auth/**,/oauth2/**
+  routes:
+    #web微服务
+    api-web:
+      path: /api/web/**
+      serviceId: web
+      strip-prefix: true
+      sensitiveHeaders:
+    #soa微服务
+    api-soa:
+      path: /api/soa/**
+      serviceId: soa
+      strip-prefix: true
+      sensitiveHeaders:
+
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8091/auth/user
+      prefer-token-info: false
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
