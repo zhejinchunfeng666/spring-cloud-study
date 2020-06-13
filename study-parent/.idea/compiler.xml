@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,9 +13,21 @@
         <module name="study-auth" />
         <module name="study-server" />
         <module name="study-core" />
+        <module name="study-soa" />
         <module name="study-web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="study-auth" target="1.8" />
+      <module name="study-core" target="1.8" />
+      <module name="study-data" target="1.8" />
+      <module name="study-mem" target="1.8" />
+      <module name="study-parent" target="1.8" />
+      <module name="study-server" target="1.8" />
+      <module name="study-soa" target="1.8" />
+      <module name="study-web" target="1.8" />
+      <module name="study-zuul" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -23,6 +36,7 @@
       <module name="study-data" options="-parameters" />
       <module name="study-mem" options="-parameters" />
       <module name="study-server" options="-parameters" />
+      <module name="study-soa" options="-parameters" />
       <module name="study-web" options="-parameters" />
       <module name="study-zuul" options="-parameters" />
     </option>

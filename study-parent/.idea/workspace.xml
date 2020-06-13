@@ -479,15 +479,12 @@
       <change afterPath="$PROJECT_DIR$/study-server/study-server.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/study-soa/study-soa.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/study-web/study-web.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-zuul/src/main/java/com/zf/study/zuul/filter/TokenAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-zuul/src/main/java/com/zf/study/zuul/oauth2/ResourceServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-zuul/src/main/java/com/zf/study/zuul/oauth2/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-zuul/src/main/resources/application.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/study-zuul/study-zuul.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/study-auth/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/study-auth/target/classes/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/study-auth/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/study-auth/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/study-auth/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/study-auth/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
@@ -504,20 +501,6 @@
       <change beforePath="$PROJECT_DIR$/study-core/target/study-core-1.0-SNAPSHOT.jar.original" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/study-data/study-data.iml" beforeDir="false" afterPath="$PROJECT_DIR$/study-data/study-data.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/study-mem/study-mem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/study-mem/study-mem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/study-zuul/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/study-zuul/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/mem/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/mem/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/mem/mapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/mem/mapper/xml/UserMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/mem/service/IUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/mem/service/impl/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/web/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/web/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/web/mapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/web/mapper/xml/UserMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/web/service/IUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/java/com/zf/study/web/service/impl/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../study-parentstudy-web/src/main/resources/mapper/UserMapper.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -689,9 +672,9 @@
       <item itemvalue="Application.StudyAuthApplication" />
       <item itemvalue="Application.StudyMemApplication" />
       <item itemvalue="Application.StudyServerApplication" />
+      <item itemvalue="Application.StudySoaApplication" />
       <item itemvalue="Application.StudyWebApplication" />
       <item itemvalue="Application.StudyZuulApplication" />
-      <item itemvalue="Application.StudySoaApplication" />
       <item itemvalue="Maven.mem" />
     </list>
     <recent_temporary>
@@ -771,11 +754,26 @@
       <option name="project" value="LOCAL" />
       <updated>1591953452686</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="删除无用文件">
+      <created>1591954938254</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1591954938254</updated>
+    </task>
+    <task id="LOCAL-00010" summary="oauth2.0集成">
+      <created>1591955047893</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1591955047893</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="MybatisPlus 配置" />
+    <MESSAGE value="删除无用文件" />
     <MESSAGE value="oauth2.0集成" />
     <option name="LAST_COMMIT_MESSAGE" value="oauth2.0集成" />
   </component>
@@ -812,10 +810,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="433" y="98" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1591943770837" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1591954020576">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1591955042528">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1591954020576" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1591955042528" />
     <state x="496" y="108" key="FileChooserDialogImpl" timestamp="1586956173345">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -860,10 +858,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="423" y="91" width="675" height="655" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1591611697246" />
-    <state x="261" y="80" key="Vcs.Push.Dialog.v2" timestamp="1591954217064">
+    <state x="261" y="80" key="Vcs.Push.Dialog.v2" timestamp="1591955062529">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="261" y="80" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1591954217064" />
+    <state x="261" y="80" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1591955062529" />
     <state x="543" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591954409251">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
