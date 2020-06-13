@@ -5,6 +5,7 @@ Spring Cloud Project Study
 #### study-server 服务注册中心
 
 #### study-auth   服务鉴权中心
+     * oauth2.0
 
 #### study-mem    会员服务中心
 
@@ -15,7 +16,7 @@ Spring Cloud Project Study
 #### study-zuul   服务网关
 
 #### study-core   服务公共核心部分
-     * 配置数据库连接
+     * 配置数据库连接--mybatis-plus
      * 实体类
 
 #### study-data   数据服务
