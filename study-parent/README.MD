@@ -10,6 +10,8 @@ Spring Cloud Project Study
 
 #### study-web    web服务中心
 
+#### study-soa    soa服务中心
+
 #### study-zuul   服务网关
 
 #### study-core   服务公共核心部分
