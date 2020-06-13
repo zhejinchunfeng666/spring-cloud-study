@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/study-auth/study-auth.iml" filepath="$PROJECT_DIR$/study-auth/study-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/study-core/study-core.iml" filepath="$PROJECT_DIR$/study-core/study-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/study-data/study-data.iml" filepath="$PROJECT_DIR$/study-data/study-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/study-mem/study-mem.iml" filepath="$PROJECT_DIR$/study-mem/study-mem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/study-parent.iml" filepath="$PROJECT_DIR$/study-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/study-server/study-server.iml" filepath="$PROJECT_DIR$/study-server/study-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/study-soa/study-soa.iml" filepath="$PROJECT_DIR$/study-soa/study-soa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/study-web/study-web.iml" filepath="$PROJECT_DIR$/study-web/study-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/study-zuul/study-zuul.iml" filepath="$PROJECT_DIR$/study-zuul/study-zuul.iml" />
+    </modules>
+  </component>
+</project>
