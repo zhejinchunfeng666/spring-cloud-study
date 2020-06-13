@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5541671e-f271-402f-b0a0-fa25e5efb545" name="Default Changelist" comment="整合mybatis">
-      <change afterPath="$PROJECT_DIR$/study-auth/src/main/java/com/zf/study/auth/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-auth/src/main/java/com/zf/study/auth/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-auth/src/main/java/com/zf/study/auth/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-core/src/main/java/com/zf/study/core/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-core/src/main/resources/config/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-data/src/main/java/com/zf/study/data/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/study-data/src/main/resources/mapping/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/study-auth/src/main/java/com/zf/study/auth/StudyAuthApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/study-auth/src/main/java/com/zf/study/auth/StudyAuthApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/study-auth/target/classes/com/zf/study/auth/StudyAuthApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/study-auth/target/classes/com/zf/study/auth/StudyAuthApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/study-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/study-server/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5541671e-f271-402f-b0a0-fa25e5efb545" name="Default Changelist" comment="整合mybatis" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
