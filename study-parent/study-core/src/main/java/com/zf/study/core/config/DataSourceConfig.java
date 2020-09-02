@@ -81,22 +81,22 @@ public class DataSourceConfig {
      * @return
      * @throws Exception
      */
-    @Bean(name="sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("datasource") DataSource dataSource) throws Exception{
-        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-        bean.setDataSource(dataSource);
-        bean.setTypeAliasesPackage("com.zf.study.core.entity");
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
-        return bean.getObject();
-    }
-
-
-    @Bean(name="transactionManager")
-    public DataSourceTransactionManager transactionManager(@Qualifier("datasource") DataSource dataSource){
-       DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
-       transactionManager.setFailEarlyOnGlobalRollbackOnly(true);
-       transactionManager.setNestedTransactionAllowed(true);
-       return transactionManager;
-    }
+//    @Bean(name="sqlSessionFactory")
+//    public SqlSessionFactory sqlSessionFactory(@Qualifier("datasource") DataSource dataSource) throws Exception{
+//        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+//        bean.setDataSource(dataSource);
+//        bean.setTypeAliasesPackage("com.zf.study.*.entity");
+//        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapping/*.xml"));
+//        return bean.getObject();
+//    }
+//
+//
+//    @Bean(name="transactionManager")
+//    public DataSourceTransactionManager transactionManager(@Qualifier("datasource") DataSource dataSource){
+//       DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
+//       transactionManager.setFailEarlyOnGlobalRollbackOnly(true);
+//       transactionManager.setNestedTransactionAllowed(true);
+//       return transactionManager;
+//    }
 
     }

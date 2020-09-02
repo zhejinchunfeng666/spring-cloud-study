@@ -1,8 +1,6 @@
 package com.zf.study.core.config;
 
-import java.time.Duration;
-import java.util.concurrent.ThreadPoolExecutor;
-
+import com.zf.study.core.utils.FstRedisSerializer;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -15,9 +13,11 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+
+import java.time.Duration;
+import java.util.concurrent.ThreadPoolExecutor;
 
 @Configuration
 @EnableAsync
@@ -71,7 +71,7 @@ public class GlobalConfig {
     public JedisPoolConfig poolConfig() {
         JedisPoolConfig poolConfig = new JedisPoolConfig();
 
-        /*//最大连接数
+
         poolConfig.setMaxTotal(30);
         //maxIdle实际上是最大连接数
         poolConfig.setMaxIdle(30);
@@ -113,7 +113,7 @@ public class GlobalConfig {
         poolConfig.setTestWhileIdle(false);
 
         //逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1
-        poolConfig.setTimeBetweenEvictionRunsMillis(-1);*/
+        poolConfig.setTimeBetweenEvictionRunsMillis(-1);
 
         return poolConfig;
     }
@@ -147,8 +147,8 @@ public class GlobalConfig {
         template.setConnectionFactory(connectionFactory);
         template.setKeySerializer(new StringRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
-//        template.setValueSerializer(new FstRedisSerializer());
-//        template.setHashValueSerializer(new FstRedisSerializer());
+        template.setValueSerializer(new FstRedisSerializer());
+        template.setHashValueSerializer(new FstRedisSerializer());
         return template;
     }
 }

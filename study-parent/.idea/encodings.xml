@@ -2,12 +2,20 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/study-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study-auth/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study-data/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study-data/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study-mem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study-mem/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study-server/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study-soa/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study-soa/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study-web/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study-zuul/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study-zuul/src/main/resources" charset="UTF-8" />
   </component>
 </project>

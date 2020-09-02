@@ -2,9 +2,9 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/amy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    url: jdbc:mysql://192.168.146.128:3306/amy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     username: root
-    password: 123456
+    password: root
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -19,10 +19,10 @@ spring:
     logSlowSql: true
   #redis配置
   redis:
-    host: 127.0.0.1
+    host: 192.168.146.128
     port: 6379
     database: 0
 mybatis-plus:
   mapper-locations: classpath:mapping/*.xml
-  type-aliases-package: com.zf.study.core.entity
+  type-aliases-package: com.zf.study.*.entity
   base-packages: com.zf.study.*.mapper

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zf.study.data.mapper.StockMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zf.study.core.entity.Stock">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="count" property="count" />
+        <result column="sale" property="sale" />
+        <result column="version" property="version" />
+    </resultMap>
+<update id="updateStock" parameterType="com.zf.study.core.entity.Stock">
+    update stock
+    set sale = sale+1,
+        version = version+1
+    where id = #{id}
+          and version = #{version}
+</update>
+</mapper>

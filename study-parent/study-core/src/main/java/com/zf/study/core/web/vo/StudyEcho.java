@@ -1,5 +1,8 @@
 package com.zf.study.core.web.vo;
 
+import lombok.Data;
+
+@Data
 public class StudyEcho<T> {
     private T data;
     private String message = "success";

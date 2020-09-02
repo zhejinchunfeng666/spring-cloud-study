@@ -14,7 +14,7 @@ public class CodeAutoGenerate {
     public static void main(String[] args) {
 
         //模块名
-        String module = "/study-web";
+        String module = "study-mem";
 
         //全局配置
         GlobalConfig globalConfig = new GlobalConfig();
@@ -33,13 +33,13 @@ public class CodeAutoGenerate {
         DataSourceConfig dataConfig = new DataSourceConfig();
         dataConfig.setDbType(DbType.MYSQL)
                   .setDriverName("com.mysql.cj.jdbc.Driver")
-                  .setUrl("jdbc:mysql://localhost:3306/amy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC")
+                  .setUrl("jdbc:mysql://192.168.146.128:3306/amy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC")
                   .setUsername("root")
-                  .setPassword("123456");
+                  .setPassword("root");
 
         //包名配置
         PackageConfig packageConfig = new PackageConfig();
-        packageConfig.setParent("com.zf.study.web")
+        packageConfig.setParent("com.zf.study.mem")
                      .setController("controller")
                      .setService("service")
                      .setServiceImpl("service.impl")
@@ -49,7 +49,7 @@ public class CodeAutoGenerate {
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel)
-                .setInclude(new String[]{"user"}) //需要生成的表，不写就是生成全部
+                .setInclude(new String[]{"stock","stock_order"}) //需要生成的表，不写就是生成全部
                 .setEntityBuilderModel( true )
                 //使用lombok注解
                 .setEntityLombokModel( true );

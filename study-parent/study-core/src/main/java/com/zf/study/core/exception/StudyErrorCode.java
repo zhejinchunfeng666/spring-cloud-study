@@ -7,8 +7,11 @@ import org.apache.commons.lang3.StringUtils;
  */
 public enum StudyErrorCode {
 
-    PARAM_MISSING(100001,"参数缺失");
-
+    PARAM_MISSING(100001,"参数缺失"),
+    SYSTEM_ERROR(100002,"系统异常"),
+    STOCK_NONUM(200001,"库存不足"),
+    ORDER_ERR(200002,"秒杀失败")
+    ;
     private int code;
 
     private String msg;
