@@ -6,11 +6,15 @@ import org.apache.commons.lang3.StringUtils;
  * @author fang.zhou
  */
 public enum StudyErrorCode {
+    /**
+     *
+     */
 
     PARAM_MISSING(100001,"参数缺失"),
     SYSTEM_ERROR(100002,"系统异常"),
     STOCK_NONUM(200001,"库存不足"),
-    ORDER_ERR(200002,"秒杀失败")
+    ORDER_ERR(200002,"秒杀失败"),
+    SPEED_SLOW(200003,"手速太快了，慢点儿吧~")
     ;
     private int code;
 

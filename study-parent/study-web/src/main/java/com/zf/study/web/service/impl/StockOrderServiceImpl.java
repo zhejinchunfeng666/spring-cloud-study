@@ -1,6 +1,8 @@
 package com.zf.study.web.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zf.study.core.constant.RedisKeyConstants;
 import com.zf.study.core.entity.Stock;
 import com.zf.study.core.entity.StockOrder;
 import com.zf.study.core.exception.StudyErrorCode;
@@ -39,9 +41,7 @@ public class StockOrderServiceImpl extends ServiceImpl<StockOrderMapper, StockOr
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void createOrder(Integer sid){
-        Stock stock1 = (Stock) redisUtils.getObject("stock");
-        log.info("redis中对象获取：{}",stock1.getName());
+    public void  createOrder(Integer sid){
         // 校验库存
        Stock stock =  checkStock(sid);
 //        // 扣库存
@@ -50,6 +50,46 @@ public class StockOrderServiceImpl extends ServiceImpl<StockOrderMapper, StockOr
         saleStock2(stock);
         // 创建订单
         creteStockOrder(stock);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void createOrder2(Integer sid) {
+        // 校验库存
+       Stock stock =  checkStockByRedis(sid);
+        // 扣库存
+        saleStockByRedis(stock);
+        // 创建订单
+        creteStockOrder(stock);
+    }
+
+    private void saleStockByRedis(Stock stock) {
+        saleStock2(stock);
+        redisUtils.incrBy(RedisKeyConstants.STOCK_SALE+stock.getId(),1);
+        redisUtils.incrBy(RedisKeyConstants.STOCK_VERSION+stock.getId(),1);
+    }
+
+    private Stock checkStockByRedis(Integer sid) {
+        // redis中获取商品信息
+        Integer count = Integer.valueOf(redisUtils.get(RedisKeyConstants.STOCK_COUNT+sid));
+        Integer sale = Integer.valueOf(redisUtils.get(RedisKeyConstants.STOCK_SALE+sid));
+        Integer version = Integer.valueOf(redisUtils.get(RedisKeyConstants.STOCK_VERSION+sid));
+        if (ObjectUtil.hasEmpty(count,sale,version)){
+            // 数据库中获取商品信息
+            Stock stock = stockMapper.selectById(sid);
+            count = stock.getCount();
+            sale = stock.getSale();
+            version = stock.getVersion();
+        }
+        if (count.equals(sale)){
+            throw new StudyException(StudyErrorCode.STOCK_NONUM);
+        }
+        Stock stock = new Stock();
+        stock.setId(sid);
+        stock.setCount(count);
+        stock.setSale(sale);
+        stock.setVersion(version);
+        return stock;
     }
 
     private void saleStock2(Stock stock) {

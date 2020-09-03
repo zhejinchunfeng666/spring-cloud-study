@@ -1,6 +1,5 @@
 package com.zf.study.core.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
@@ -22,35 +21,6 @@ public class RedisUtils {
     @Resource
     protected RedisTemplate<String, Object> redisTemplate;
 
-    /**
-     * 字符串操作
-     */
-    @Resource(name = "redisTemplate")
-    protected ValueOperations<String, Object> valueOperations;
-
-    /**
-     * 散列操作
-     */
-    @Resource(name = "redisTemplate")
-    protected HashOperations<String, String, Object> hashOperations;
-
-    /**
-     * 列表操作
-     */
-    @Resource(name = "redisTemplate")
-    protected ListOperations<String, Object> listOperations;
-
-    /**
-     * 无序集合
-     */
-    @Resource(name = "redisTemplate")
-    protected SetOperations<String, Object> setOperations;
-
-    /**
-     * 有序集合
-     */
-    @Resource(name = "redisTemplate")
-    protected ZSetOperations<String, Object> zSetOperations;
 
 
     /***************jedis方式*****************/
@@ -232,6 +202,72 @@ public class RedisUtils {
             }
         }
     }
+
+    /**
+     * 原子操作 增1
+     * @param key
+     * @return
+     */
+    public Long incr(String key){
+        Jedis jedis = jedisPool.getResource();
+        try {
+            return jedis.incr(key);
+        } finally {
+            if (jedis != null){
+                jedis.close();
+            }
+        }
+    }
+
+    /**
+     * 以increment的步长原子递增
+     * @param key
+     * @param increment
+     * @return
+     */
+    public Long incrBy(String key,long increment){
+        Jedis jedis = jedisPool.getResource();
+        try {
+            return jedis.incrBy(key,increment);
+        } finally {
+            if (jedis != null){
+                jedis.close();
+            }
+        }
+    }
+
+    /**
+     * 原子递减1
+     * @param key
+     * @return
+     */
+    public Long decr(String key){
+        Jedis jedis = jedisPool.getResource();
+        try {
+            return jedis.decr(key);
+        } finally {
+            if (jedis != null){
+                jedis.close();
+            }
+        }
+    }
+
+    /**
+     * 以decrement的步长原子递减
+     * @param key
+     * @param decrement
+     * @return
+     */
+    public Long decrBy(String key,long decrement){
+        Jedis jedis = jedisPool.getResource();
+        try {
+           return jedis.decrBy(key,decrement);
+        } finally {
+            if (jedis != null){
+                jedis.close();
+            }
+        }
+    }
     /********************redisTemplate*************************/
 
     /**
@@ -243,28 +279,35 @@ public class RedisUtils {
         redisTemplate.opsForValue().set(key,value);
     }
 
-    public void setObject(String key,Object value){
-        redisTemplate.opsForValue().set(key,value);
-    }
-
     /**
      *
      * @param key
      * @param value
      * @param timeout 过期时间  (秒)
      */
-    public void set2(String key,String value,long timeout){
+    public void set2(String key,Object value,long timeout){
         redisTemplate.opsForValue().set(key,value,timeout, TimeUnit.SECONDS);
     }
 
 
-    public String get2(String key){
-        return (String) redisTemplate.opsForValue().get(key);
+    public Object get2(String key){
+        return redisTemplate.opsForValue().get(key);
+    }
+
+
+    /**
+     * 操作对象
+     * @param key
+     * @param value
+     */
+    public void setObject(String key,Object value,long expireTime){
+        redisTemplate.opsForValue().set(key,value,expireTime,TimeUnit.SECONDS);
     }
 
     public Object getObject(String key){
         return redisTemplate.opsForValue().get(key);
     }
+
 
     /**
      * Hash
@@ -277,4 +320,36 @@ public class RedisUtils {
     public String hget2(String key,String field){
         return (String) redisTemplate.opsForHash().get(key,field);
     }
+
+    /**
+     * 原子递增
+     * @param key
+     * @param increment
+     * @return
+     */
+    public Long increment(String key,long increment){
+        return redisTemplate.opsForValue().increment(key,increment);
+    }
+
+    /**
+     * 原子递减
+     * @param key
+     * @param decrement
+     * @return
+     */
+    public Long decrement(String key,long decrement){
+        return redisTemplate.opsForValue().decrement(key,decrement);
+    }
+
+    /**
+     * 当key不存在时才能放成功
+     * @param key
+     * @param value
+     * @param expireTime 过期时间
+     * @return
+     */
+    public Boolean setIfAbsent(String key,Object value,long expireTime){
+       return redisTemplate.opsForValue().setIfAbsent(key,value,expireTime,TimeUnit.SECONDS);
+    }
+
 }

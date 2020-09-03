@@ -14,4 +14,6 @@ import com.zf.study.core.entity.StockOrder;
 public interface IStockOrderService extends IService<StockOrder> {
 
     void createOrder(Integer sid);
+
+    void createOrder2(Integer sid);
 }
