@@ -2,6 +2,7 @@ package com.zf.study.web.controller;
 
 
 import com.zf.study.core.annotation.RateLimiter;
+import com.zf.study.core.annotation.RateLimiter2;
 import com.zf.study.core.constant.RedisKeyConstants;
 import com.zf.study.core.entity.Stock;
 import com.zf.study.core.exception.StudyErrorCode;
@@ -67,7 +68,7 @@ public class StockController extends BaseController {
      * @param sid
      * @return
      */
-    @RateLimiter(max = 10,timeout = 100)
+    @RateLimiter(max = 10,timeOut = 100)  // 100秒内可以通过10个请求
     @RequestMapping("/create")
     public StudyEcho createOrder(@RequestParam Integer sid){
         try {
@@ -100,10 +101,11 @@ public class StockController extends BaseController {
 
 
     /**
-     * 每个人10秒内允许通过5个请求
+     *
      * @return
      */
-    @RateLimiter(max = 5,timeout = 10)
+    // 初始令牌桶为10个token，每60秒向桶中存放5个token
+    @RateLimiter2(bucketCapacity = 10,addToken = 5,addInterval = 60)
     @RequestMapping("/test")
     public StudyEcho test(){
         return new StudyEcho(null,"执行成功",0);

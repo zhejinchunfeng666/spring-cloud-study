@@ -2,6 +2,7 @@ package com.zf.study.core.aspect;
 
 import cn.hutool.core.util.StrUtil;
 import com.zf.study.core.annotation.RateLimiter;
+import com.zf.study.core.annotation.RateLimiter2;
 import com.zf.study.core.exception.StudyErrorCode;
 import com.zf.study.core.exception.StudyException;
 import com.zf.study.core.utils.IpUtils;
@@ -29,13 +30,13 @@ import java.util.concurrent.TimeUnit;
 @Aspect
 @Component
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
-public class RateLimiterAspect {
+public class RateLimiterAspect2 {
     private final static String SEPARATOR = ":";
     private final static String REDIS_LIMIT_KEY_PREFIX = "limit:";
     private final StringRedisTemplate stringRedisTemplate;
     private final RedisScript<Long> limitRedisScript;
 
-    @Pointcut("@annotation(com.zf.study.core.annotation.RateLimiter)")
+    @Pointcut("@annotation(com.zf.study.core.annotation.RateLimiter2)")
     public void rateLimit() {
 
     }
@@ -44,7 +45,7 @@ public class RateLimiterAspect {
     public Object pointcut(ProceedingJoinPoint point) throws Throwable {
         MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
-        RateLimiter rateLimiter = method.getAnnotation(RateLimiter.class);
+        RateLimiter2 rateLimiter = method.getAnnotation(RateLimiter2.class);
         if (rateLimiter != null) {
             String key = rateLimiter.key();
             // 默认用类名+方法名做限流的 key 前缀
@@ -55,10 +56,12 @@ public class RateLimiterAspect {
             // TODO: 此时需要考虑局域网多用户访问的情况，因此 key 后续需要加上方法参数更加合理
             key = key + SEPARATOR + IpUtils.getIpAddr();
 
-            long max = rateLimiter.max();
-            long timeOut = rateLimiter.timeOut();
+            long bucketCapacity = rateLimiter.bucketCapacity();
+            // 转为毫秒
+            long addInterval = rateLimiter.addInterval()*1000;
+            long addToken = rateLimiter.addToken();
             TimeUnit timeUnit = rateLimiter.timeUnit();
-            boolean limited = shouldLimited(key, max, timeOut, timeUnit);
+            boolean limited = shouldLimited(key, bucketCapacity, addToken, addInterval);
             if (limited) {
                 throw new StudyException(StudyErrorCode.SPEED_SLOW);
             }
@@ -67,15 +70,15 @@ public class RateLimiterAspect {
         return point.proceed();
     }
 
-    private boolean shouldLimited(String key, long max, long timeOut, TimeUnit timeUnit) {
+    private boolean shouldLimited(String key, long bucketCapacity, long addToken, long addInterval) {
         key = REDIS_LIMIT_KEY_PREFIX+key;
-        Long executeTimes = stringRedisTemplate.execute(limitRedisScript, Collections.singletonList(key), max + "", timeOut + "", timeUnit + "");
+        Long executeTimes = stringRedisTemplate.execute(limitRedisScript, Collections.singletonList(key), bucketCapacity + "", addToken + "", addInterval + "",System.currentTimeMillis()+"");
         if (executeTimes != null) {
-            if (executeTimes == 0) {
-                log.error("【{}】在单位时间 {} 秒内已达到访问上限，当前接口上限 {}", key, timeOut, max);
+            if (executeTimes < 0) {
+                log.error("【{}】在单位时间 {} 毫秒内已达到访问上限，当前接口上限 {}", key, addInterval, bucketCapacity);
                 return true;
             } else {
-                log.info("【{}】在单位时间 {} 秒内访问 {} 次", key, timeOut, executeTimes);
+                log.info("【{}】在单位时间 {} 毫秒内访问 {} 次", key, addInterval, bucketCapacity-executeTimes);
                 return false;
             }
         }
