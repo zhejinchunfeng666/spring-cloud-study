@@ -16,4 +16,6 @@ public interface IStockOrderService extends IService<StockOrder> {
     void createOrder(Integer sid);
 
     void createOrder2(Integer sid);
+
+    Object createOrderInfo(Integer id);
 }

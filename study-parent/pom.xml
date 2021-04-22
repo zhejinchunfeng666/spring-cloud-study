@@ -16,6 +16,7 @@
         <module>study-web</module>
         <module>study-zuul</module>
         <module>study-soa</module>
+        <module>study-elastic</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

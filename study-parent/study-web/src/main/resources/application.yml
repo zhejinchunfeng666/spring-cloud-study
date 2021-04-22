@@ -7,29 +7,29 @@ server:
 
 
 
-rocketmq:
-  producer:
-    # 消费者组名
-    groupName: testGroup
-    namesrvAddr: 192.168.146.128:9876
-    instanceName: testProducer
-    topic: topic2020
-    tag: test
-    # 最大消息限制 默认128K
-    maxMessageSize: 131072
-    # 发送消息的超时时间
-    sendMsgTimeout: 10000
-
-  consumer:
-    groupName: testGroup
-    namesrvAddr: 192.168.146.128:9876
-    topic: topic2020
-    tag: test
-    consumeThreadMin: 20
-    consumeThreadMax: 64
-
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8081/eureka/
+#rocketmq:
+#  producer:
+#    # 消费者组名
+#    groupName: testGroup
+#    namesrvAddr: 192.168.146.128:9876
+#    instanceName: testProducer
+#    topic: topic2020
+#    tag: test
+#    # 最大消息限制 默认128K
+#    maxMessageSize: 131072
+#    # 发送消息的超时时间
+#    sendMsgTimeout: 10000
+#
+#  consumer:
+#    groupName: testGroup
+#    namesrvAddr: 192.168.146.128:9876
+#    topic: topic2020
+#    tag: test
+#    consumeThreadMin: 20
+#    consumeThreadMax: 64
+#
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8081/eureka/

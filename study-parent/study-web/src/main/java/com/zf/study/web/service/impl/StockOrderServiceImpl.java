@@ -63,6 +63,28 @@ public class StockOrderServiceImpl extends ServiceImpl<StockOrderMapper, StockOr
         creteStockOrder(stock);
     }
 
+    @Override
+    public Object createOrderInfo(Integer id) {
+        // redis中预减库存
+        Long aLong = redisUtils.decrBy(RedisKeyConstants.STOCK_COUNT + id, 1);
+        log.info("库存数量:{}",aLong);
+        if (aLong < 0){
+            throw new StudyException(StudyErrorCode.STOCK_NONUM);
+        }
+        // 下单
+        insertOrder(id);
+        return "下单成功";
+    }
+
+    private void insertOrder(Integer id) {
+        Stock stock = stockMapper.selectById(id);
+        StockOrder stockOrder = new StockOrder();
+        stockOrder.setName(stock.getName());
+        stockOrder.setSid(stock.getId());
+        stockOrder.setCreateTime(LocalDateTime.now());
+        orderMapper.insert(stockOrder);
+    }
+
     private void saleStockByRedis(Stock stock) {
         saleStock2(stock);
         redisUtils.incrBy(RedisKeyConstants.STOCK_SALE+stock.getId(),1);
