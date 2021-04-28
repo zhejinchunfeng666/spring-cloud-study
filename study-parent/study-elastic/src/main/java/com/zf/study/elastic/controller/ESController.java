@@ -19,7 +19,6 @@ import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
@@ -37,7 +36,6 @@ public class ESController {
 
     private static  final String INDEX_TEST = "index_test";
 
-    private static  final String INDEX_TYPE = "index_type";
 
     @Autowired
     private RestHighLevelClient client;
@@ -56,7 +54,6 @@ public class ESController {
         indexRequest.source(JSONUtil.toJsonStr(user), XContentType.JSON);
         IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
         log.info("response:{}",response.status());
-//        client.close();
       return response.status();
     }
 
@@ -86,7 +83,7 @@ public class ESController {
         UpdateRequest updateRequest = new UpdateRequest(INDEX_TEST,user.getId().toString());
         updateRequest.doc(JSONUtil.toJsonStr(user),XContentType.JSON);
         UpdateResponse updateResponse = client.update(updateRequest, RequestOptions.DEFAULT);
-        log.info("更新返回:{]",updateResponse.getResult());
+        log.info("更新返回:{}",updateResponse.getResult());
         return updateResponse.getResult();
     }
 
@@ -118,5 +115,23 @@ public class ESController {
             System.out.println(searchHit.getSourceAsString());
         }
         return "hits";
+    }
+
+    @GetMapping("/queryAll")
+    public Object queryAll() throws IOException {
+        SearchRequest searchRequest = new SearchRequest();
+        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+        sourceBuilder.query(QueryBuilders.matchAllQuery()).from(0).size(10);
+//        searchRequest.indices("zf*");
+        searchRequest.source(sourceBuilder);
+        searchRequest.searchType(SearchType.DFS_QUERY_THEN_FETCH);
+        SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
+        SearchHits hits = searchResponse.getHits();
+        SearchHit[] hitsArray = hits.getHits();
+        for (SearchHit searchHit : hitsArray) {
+            log.info("返回结果:{}",searchHit.getSourceAsString());
+        }
+//        client.close();
+        return "s";
     }
 }

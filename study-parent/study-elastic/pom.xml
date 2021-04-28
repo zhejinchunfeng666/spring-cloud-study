@@ -24,12 +24,6 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
-<!--    <dependency>-->
-<!--        <groupId>org.springframework.data</groupId>-->
-<!--        <artifactId>spring-data-elasticsearch</artifactId>-->
-<!--&lt;!&ndash;        <version>4.1.1</version>&ndash;&gt;-->
-<!--    </dependency>-->
-    <!-- elastic依赖-->
     <dependency>
         <groupId>org.elasticsearch.client</groupId>
         <artifactId>elasticsearch-rest-high-level-client</artifactId>
@@ -56,11 +50,6 @@
         <artifactId>elasticsearch-rest-client</artifactId>
         <version>[7.11.2]</version>
     </dependency>
-    <!--    <dependency>-->
-<!--        <groupId>org.elasticsearch.client</groupId>-->
-<!--        <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
-<!--        <version>7.11.2</version>-->
-<!--    </dependency>-->
 </dependencies>
 
 </project>
